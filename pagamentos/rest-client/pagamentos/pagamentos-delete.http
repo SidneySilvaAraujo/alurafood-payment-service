@@ -1,0 +1,5 @@
+@baseUrl = http://localhost:8080
+@pagamentoId = 1
+
+### Remover pagamento
+DELETE {{baseUrl}}/pagamentos/{{pagamentoId}}

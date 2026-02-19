@@ -1,6 +1,7 @@
 package br.com.alurafood.pagamentos.service;
 
 import br.com.alurafood.pagamentos.dto.PagamentoDto;
+import br.com.alurafood.pagamentos.model.Pagamento;
 import br.com.alurafood.pagamentos.model.Status;
 import br.com.alurafood.pagamentos.repository.PagamentoRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,7 +25,7 @@ public class PagamentoService {
     }
 
     public PagamentoDto obterPorId(Long id) {
-        Pagamento pagamento = repository.findById()
+        Pagamento pagamento = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException());
 
         return modelMapper.map(pagamento, PagamentoDto.class);
@@ -36,6 +37,18 @@ public class PagamentoService {
         repository.save(pagamento);
 
         return modelMapper.map(pagamento, PagamentoDto.class);
+    }
+
+    public PagamentoDto atualizarPagamento(Long id, PagamentoDto dto) {
+        Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
+        pagamento.setId(id);
+        pagamento = repository.save(pagamento);
+
+        return modelMapper.map(pagamento, PagamentoDto.class);
+    }
+
+    public void excluirPagamento(Long id) {
+        repository.deleteById(id);
     }
 }
 

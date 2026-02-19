@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:8080
+@pagamentoId = 1
+
+### Atualizar pagamento
+PUT {{baseUrl}}/pagamentos/{{pagamentoId}}
+Content-Type: application/json
+
+{
+  "valor": 150.00,
+  "nome": "Sidnei Atualizado",
+  "numero": "1234123412341234",
+  "expiracao": "12/2030",
+  "codigo": "123",
+  "formaDePagamentoId": 1,
+  "pedidoId": 1
+}
