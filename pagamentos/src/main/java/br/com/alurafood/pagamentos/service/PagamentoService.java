@@ -57,7 +57,6 @@ public class PagamentoService {
     }
 
     public void confirmarPagamento(Long id) {
-        System.out.println("o id recebido é: " + id);
         Optional<Pagamento> pagamento = repository.findById(id);
 
         if (!pagamento.isPresent()) {
